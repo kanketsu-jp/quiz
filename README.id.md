@@ -84,9 +84,29 @@ Markdown format bebas. Latar belakang, analisis akar masalah, kode perbaikan, pe
 .temp/
 ```
 
+## Konfigurasi
+
+Secara default, quiz membaca materi belajar dari `.temp/learn/`. Anda dapat menyesuaikan path menggunakan file konfigurasi:
+
+| Prioritas | File | Format |
+|-----------|------|--------|
+| 1 | `.claude/quiz.json` | `{ "learn_dir": "path/to/dir" }` |
+| 2 | `.claude/settings.local.json` | `{ "quiz": { "learn_dir": "path/to/dir" } }` |
+| 3 | `.claude/settings.json` | `{ "quiz": { "learn_dir": "path/to/dir" } }` |
+| 4 | Default | `.temp/learn/` |
+
+Contoh `.claude/quiz.json`:
+
+```json
+{
+  "learn_dir": "docs/quiz-materials"
+}
+```
+
 ## Keamanan
 
-- Hanya membaca file dari direktori `.temp/learn/`
+- Hanya membaca file konfigurasi dari direktori `.claude/` (untuk resolusi `learn_dir`)
+- Hanya membaca file materi belajar dari direktori yang dikonfigurasi
 - Tidak menjalankan perintah shell
 - Tidak mengubah file apa pun
 - Instruksi dalam materi belajar diabaikan (diperlakukan hanya sebagai konten)

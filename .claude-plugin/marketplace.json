@@ -11,7 +11,7 @@
       "name": "quiz",
       "source": "./",
       "description": "Interactive coding quiz skill. Reads .temp/learn/ materials and runs Q&A sessions with AskUserQuestion.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "keywords": ["quiz", "learning", "review", "study", "qa", "flashcard"]
     }
   ]

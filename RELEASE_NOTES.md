@@ -1,5 +1,21 @@
 # Release Notes
 
+## v1.1.0
+
+### 新機能 / New Features
+
+- **学習資料パスのカスタマイズ** — `.claude/quiz.json` 等の設定ファイルで `learn_dir` を指定可能に
+- **設定の優先順位** — `.claude/quiz.json` → `.claude/settings.local.json` → `.claude/settings.json` → デフォルト `.temp/learn/`
+- **Customizable learning directory** — Configure `learn_dir` in `.claude/quiz.json` or other config files
+- **Config priority chain** — `.claude/quiz.json` → `.claude/settings.local.json` → `.claude/settings.json` → default `.temp/learn/`
+
+### セキュリティ / Security
+
+- 設定ファイルは `.claude/` ディレクトリ内のみ読み取り
+- `learn_dir` は相対パスのみ許可（`..` や絶対パスは拒否）
+
+---
+
 ## v1.0.0
 
 初回リリース。

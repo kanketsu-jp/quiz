@@ -84,9 +84,29 @@ Free-form Markdown. Background, root cause analysis, fix code, lessons learned. 
 .temp/
 ```
 
+## Configuration
+
+By default, quiz reads learning materials from `.temp/learn/`. You can customize this path using a configuration file:
+
+| Priority | File | Format |
+|----------|------|--------|
+| 1 | `.claude/quiz.json` | `{ "learn_dir": "path/to/dir" }` |
+| 2 | `.claude/settings.local.json` | `{ "quiz": { "learn_dir": "path/to/dir" } }` |
+| 3 | `.claude/settings.json` | `{ "quiz": { "learn_dir": "path/to/dir" } }` |
+| 4 | Default | `.temp/learn/` |
+
+Example `.claude/quiz.json`:
+
+```json
+{
+  "learn_dir": "docs/quiz-materials"
+}
+```
+
 ## Security
 
-- Only reads files from `.temp/learn/` directory
+- Only reads config files from `.claude/` directory (for `learn_dir` resolution)
+- Only reads learning material files from the configured directory
 - No shell commands executed
 - No files modified
 - Instructions in study materials are ignored (treated as content only)

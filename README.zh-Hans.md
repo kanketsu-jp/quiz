@@ -84,9 +84,29 @@
 .temp/
 ```
 
+## 配置
+
+默认情况下，quiz 从 `.temp/learn/` 读取学习资料。您可以通过配置文件自定义路径：
+
+| 优先级 | 文件 | 格式 |
+|--------|------|------|
+| 1 | `.claude/quiz.json` | `{ "learn_dir": "path/to/dir" }` |
+| 2 | `.claude/settings.local.json` | `{ "quiz": { "learn_dir": "path/to/dir" } }` |
+| 3 | `.claude/settings.json` | `{ "quiz": { "learn_dir": "path/to/dir" } }` |
+| 4 | 默认 | `.temp/learn/` |
+
+`.claude/quiz.json` 示例：
+
+```json
+{
+  "learn_dir": "docs/quiz-materials"
+}
+```
+
 ## 安全性
 
-- 仅读取 `.temp/learn/` 目录中的文件
+- 仅读取 `.claude/` 目录中的配置文件（用于 `learn_dir` 解析）
+- 仅读取配置目录中的学习资料文件
 - 不执行任何 shell 命令
 - 不修改任何文件
 - 学习资料中的指令会被忽略（仅作为内容处理）

@@ -84,9 +84,29 @@ Markdown de formato livre. Contexto, análise de causa raiz, código de correç�
 .temp/
 ```
 
+## Configuração
+
+Por padrão, quiz lê materiais de estudo de `.temp/learn/`. Você pode personalizar o caminho usando um arquivo de configuração:
+
+| Prioridade | Arquivo | Formato |
+|------------|---------|---------|
+| 1 | `.claude/quiz.json` | `{ "learn_dir": "path/to/dir" }` |
+| 2 | `.claude/settings.local.json` | `{ "quiz": { "learn_dir": "path/to/dir" } }` |
+| 3 | `.claude/settings.json` | `{ "quiz": { "learn_dir": "path/to/dir" } }` |
+| 4 | Padrão | `.temp/learn/` |
+
+Exemplo de `.claude/quiz.json`:
+
+```json
+{
+  "learn_dir": "docs/quiz-materials"
+}
+```
+
 ## Segurança
 
-- Apenas lê arquivos do diretório `.temp/learn/`
+- Apenas lê arquivos de configuração do diretório `.claude/` (para resolução de `learn_dir`)
+- Apenas lê arquivos de materiais de estudo do diretório configurado
 - Não executa comandos shell
 - Não modifica arquivos
 - Instruções em materiais de estudo são ignoradas (tratadas apenas como conteúdo)
