@@ -1,84 +1,96 @@
-# quiz — Interactive Coding Quiz for Claude Code
+# quiz
 
-コーディング中に学んだことを、クイズ形式で復習できる Claude Code スキルです。
+> 🇺🇸 **English** | 🇯🇵 [日本語](./README.ja.md) | 🇨🇳 [简体中文](./README.zh-Hans.md) | 🇪🇸 [Español](./README.es.md) | 🇮🇳 [हिन्दी](./README.hi.md) | 🇧🇷 [Português](./README.pt.md) | 🇮🇩 [Bahasa Indonesia](./README.id.md)
 
-## 使い方
+An interactive coding quiz skill for Claude Code. Review and reinforce what you learned during development — bugs, libraries, debugging insights — through quiz format.
 
-### 1. スキルをインストール
+## Install
 
-```bash
-claude mcp add-skill kanketsu-jp/quiz
+```
+/plugin marketplace add kanketsu-jp/quiz
+/plugin install quiz@kanketsu-quiz
 ```
 
-### 2. 学習資料を作成
+## Usage
 
-プロジェクトルートに `.temp/learn/{番号}/` ディレクトリを作成し、以下の2ファイルを配置します:
+### 1. Create learning materials
+
+Create `.temp/learn/{number}/` directory with two files:
 
 ```
 .temp/learn/1/
-├── study-notes.md   # 学習ノート（原因・修正内容・解説）
-└── qa-list.md       # Q&Aリスト（クイズの元データ）
+├── study-notes.md   # Study notes (context, code, explanations)
+└── qa-list.md       # Q&A list (quiz source data)
 ```
 
-#### study-notes.md のフォーマット
+Or just ask Claude Code:
 
-自由形式の Markdown。問題の背景、原因分析、修正コード、教訓などを記載します。
+```
+Summarize what we just fixed into .temp/learn/1/ as study materials.
+Create study-notes.md and qa-list.md.
+```
 
-#### qa-list.md のフォーマット
+### 2. Run the quiz
+
+```
+/quiz 1            # Run quiz #1
+/quiz scrollarea   # Search by keyword
+/quiz              # List available quizzes
+/quiz list         # List available quizzes
+```
+
+## Quiz Modes
+
+| Mode | Description |
+|------|-------------|
+| All questions | All questions in order |
+| Random 5 | 5 random questions |
+| By category | Choose a category |
+
+## File Formats
+
+### qa-list.md
 
 ```markdown
-## カテゴリ名
+## Category Name
 
-### Q1: 質問文？
+### Q1: Question text?
 
 #### A
 
-\`\`\`
-回答（コードブロックやテキスト）
-\`\`\`
+Answer text (code blocks or plain text)
 ```
 
-### 3. クイズを実行
+`##` headings become categories. `### Q:` is a question. `#### A` is the answer.
 
-```
-/quiz 1          # 番号を指定して実行
-/quiz scrollarea  # キーワードで検索
-/quiz            # 一覧から選択
-/quiz list       # 利用可能なクイズを一覧表示
-```
+### study-notes.md
 
-## クイズモード
+Free-form Markdown. Background, root cause analysis, fix code, lessons learned. Referenced for explanations when answers are wrong.
 
-| モード | 説明 |
-|--------|------|
-| 全問チャレンジ | 全問を順番に出題 |
-| ランダム5問 | ランダムに5問を出題 |
-| カテゴリ別 | カテゴリを選んで出題 |
+## Best Practices
 
-## 学習資料の作り方
-
-Claude Code に以下のように依頼すると、自動で資料を生成できます:
-
-```
-今回の修正内容を .temp/learn/1/ に学習資料としてまとめて。
-study-notes.md と qa-list.md を作成して。
-```
-
-### おすすめのタイミング
-
-- バグを修正した後
-- 新しいライブラリの使い方を学んだ後
-- デバッグで苦労した後
-- コードレビューで指摘を受けた後
+| When | What to do |
+|------|-----------|
+| After fixing a bug | Ask Claude to create study materials |
+| Next day | `/quiz` to review yesterday's learning |
+| Weekend | `/quiz` for weekly review |
+| After code review | Turn review feedback into materials |
 
 ## .gitignore
 
-`.temp/` は `.gitignore` に追加することを推奨します。学習資料はローカル専用です。
+`.temp/` should be in `.gitignore`. Learning materials are local-only.
 
 ```gitignore
 .temp/
 ```
 
-## ライセンス
+## Security
+
+- Only reads files from `.temp/learn/` directory
+- No shell commands executed
+- No files modified
+- Instructions in study materials are ignored (treated as content only)
+
+## License
 
 MIT

@@ -3,3 +3,9 @@ node_modules/
 .claude/
 .playwright-mcp/
 .temp/
+CLAUDE.md
+article.md
+demo/
+.npmignore
+.claude/teams/
+*.log
