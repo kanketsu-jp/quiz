@@ -1,0 +1,18 @@
+{
+  "name": "kanketsu-quiz",
+  "owner": {
+    "name": "kanketsu-jp"
+  },
+  "metadata": {
+    "description": "Interactive coding quiz plugin for Claude Code — review and reinforce your learning"
+  },
+  "plugins": [
+    {
+      "name": "quiz",
+      "source": "./",
+      "description": "Interactive coding quiz skill. Reads .temp/learn/ materials and runs Q&A sessions with AskUserQuestion.",
+      "version": "1.0.0",
+      "keywords": ["quiz", "learning", "review", "study", "qa", "flashcard"]
+    }
+  ]
+}

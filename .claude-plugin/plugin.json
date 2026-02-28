@@ -1,0 +1,12 @@
+{
+  "name": "quiz",
+  "description": "Interactive coding quiz skill for Claude Code. Reads learning materials and runs Q&A sessions.",
+  "version": "1.0.0",
+  "author": {
+    "name": "kanketsu-jp"
+  },
+  "homepage": "https://github.com/kanketsu-jp/quiz",
+  "repository": "https://github.com/kanketsu-jp/quiz",
+  "license": "MIT",
+  "keywords": ["quiz", "learning", "review", "study", "qa"]
+}
